@@ -1,0 +1,3 @@
+[submodule "agi/scripts/asterisk-googletts"]
+	path = agi/scripts/asterisk-googletts
+	url = https://github.com/zaf/asterisk-googletts.git
