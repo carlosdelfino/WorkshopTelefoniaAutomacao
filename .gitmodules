@@ -1,3 +1,12 @@
 [submodule "fontes/scripts/agi/scripts/asterisk-googletts"]
 	path = fontes/scripts/agi/scripts/asterisk-googletts
 	url = https://github.com/zaf/asterisk-googletts.git
+[submodule "fontes/scripts/agi/scripts/asterisk-speech-recog"]
+	path = fontes/scripts/agi/scripts/asterisk-speech-recog
+	url = https://github.com/zaf/asterisk-speech-recog.git
+[submodule "agi/fontes/Speex-with-header-bytes"]
+	path = agi/fontes/Speex-with-header-bytes
+	url = git://github.com/QXIP/Speex-with-header-bytes.git
+[submodule "fontes/Speex-with-header-bytes"]
+	path = fontes/Speex-with-header-bytes
+	url = git://github.com/QXIP/Speex-with-header-bytes.git
