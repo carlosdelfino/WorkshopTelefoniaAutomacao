@@ -15,10 +15,14 @@
 # set language for voice recognition (en-US, en-GB, fr-FR, ...)
 LANGUAGE="en-US"
 # A chave abaixo pode funcionar, pois a criei exatamente para testes, porém com o uso excessivo pode ser removida
-KEY=""AIzaSyCXXE2QtAR-Egbb0JSCPmWKMWJlu5szx2Y
+KEY="AIzaSyCXXE2QtAR-Egbb0JSCPmWKMWJlu5szx2Y"
 
 # set PATH
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# set URL
+URL="http://www.google.com/speech-api/v2/recognize?maxresult=1&client=chromium&lang="$LANGUAGE"&key="$KEY"&output=json&xjerr=1&pfilter=0"
+
 
 # save the current directory 
 pushd .
@@ -79,7 +83,10 @@ else
   sox stream.part3.wav -r 16000 -b 16 -c 1 audio.flac vad reverse vad reverse lowpass -2 2500
 
   # call Google Voice Recognition sending flac file as POST
-  curl --data-binary @audio.flac --header 'Content-type: audio/x-flac; rate=16000' 'https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&pfilter=0&lang='$LANGUAGE'&maxresults=1&key='$KEY'' 1>audio.txt
+  curl --data-binary @audio.flac --header 'Content-type: audio/x-flac; rate=16000' \
+	  --user-agent \
+	  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7' \
+	  "'"$URL"'" 1>audio.txt
 
   # extract the transcript and confidence results
   FILETOOBIG=`cat audio.txt | grep "<HTML>"`
